@@ -26,6 +26,8 @@ pipeline{
                 def imageName = "my-app:${env.BUILD_NUMBER}"
                 sh """
                     docker build -t ${imageName} .
+                    docker push registry/image:v1 
+                    docker rmi -f \$(docker images -q) || true
                 """
                }
             }
