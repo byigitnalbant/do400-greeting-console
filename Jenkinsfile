@@ -20,7 +20,14 @@ pipeline{
                 sh "npm test"
             }
         }
-
+        stage("Build-Docker-Image"){
+            steps{
+                def imageName = "my-app:${env.BUILD_NUMBER}"
+                sh """
+                    docker build -t ${imageName}
+                """
+            }
+        }
         // Add the Release stage here
     }
 }
