@@ -22,10 +22,12 @@ pipeline{
         }
         stage("Build-Docker-Image"){
             steps{
+               script{
                 def imageName = "my-app:${env.BUILD_NUMBER}"
                 sh """
                     docker build -t ${imageName} .
                 """
+               }
             }
         }
         // Add the Release stage here
