@@ -24,7 +24,7 @@ pipeline{
             steps{
                 def imageName = "my-app:${env.BUILD_NUMBER}"
                 sh """
-                    docker build -t ${imageName}
+                    docker build -t ${imageName} .
                 """
             }
         }
